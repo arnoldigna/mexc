@@ -2,7 +2,7 @@
 // @name         MEXC
 // @namespace    Mexc
 // @version      1.0
-// @description  Replace values on MEXC with custom ones
+// @description  MEXC
 // @match        *://*/*
 // @grant        none
 // @license      MIT
