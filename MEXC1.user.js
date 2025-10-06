@@ -2,7 +2,7 @@
 // @name         MEXC
 // @namespace    Mexc
 // @version      1.0
-// @description  MEXC
+// @description  Mexc
 // @match        *://*/*
 // @grant        none
 // @license      MIT
@@ -12,8 +12,9 @@
     'use strict';
 
     const replacements = [
-        { match: '6,80', replaceWith: '425.000,00', color: 'black' },
-        { match: '-1.500,00 EUR', replaceWith: '+425.000,00 EUR', color: 'green' },
+        { match: '300,00', replaceWith: '42.500,00', color: 'black' },
+        { match: '66026001', replaceWith: 'Mexc Anlagen', color: 'black' },
+	{ match: 'Geschäftsanteile', replaceWith: 'Mexc Anlagen', color: 'black' },
     ];
 
     function replaceInNode(node) {
