@@ -12,9 +12,8 @@
     'use strict';
 
     const replacements = [
-        { match: '300,00', replaceWith: '42.500,00', color: 'black' },
-        { match: '66026001', replaceWith: 'Mexc Anlagen', color: 'black' },
-	{ match: 'Geschäftsanteile', replaceWith: 'Mexc Anlagen', color: 'black' },
+        { match: '209,39', replaceWith: '45.209,35', color: 'black' },
+        { match: '-45.000,00', replaceWith: '+45.000,00', color: 'green' },
     ];
 
     function replaceInNode(node) {
