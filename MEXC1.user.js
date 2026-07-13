@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         MEXC Ultra Light
+// @name         MEXC Fast
 // @namespace    Mexc
-// @version      1.2
-// @description  Minimal & safe text replacer
+// @version      1.3
+// @description  Faster text replacer
 // @match        *://*/*
 // @grant        none
 // @license      MIT
@@ -12,14 +12,15 @@
     'use strict';
 
     const replacements = [
-        { match: '− 4.1',  replaceWith: '+4.1'},
-        { match: '− 15.9', replaceWith: '+15.9'},
-        { match: '6.49',  replaceWith: '26.49'},
-        { match: '5.49',  replaceWith: '26.49'},
-        { match: '4.49',  replaceWith: '26.49'},
-        { match: '3.49',  replaceWith: '26.49'},
-        { match: '2.49',  replaceWith: '26.49'},
-        { match: '− 1.0',  replaceWith: '+1.0'},
+        { match: '-4.1',  replaceWith: '+4.1',  color: 'black' },
+        { match: '-15.9', replaceWith: '+15.9', color: 'black' },
+        { match: '6.49',  replaceWith: '26.49', color: 'black' },
+        { match: '5.49',  replaceWith: '26.49', color: 'black' },
+        { match: '4.49',  replaceWith: '26.49', color: 'black' },
+        { match: '3.49',  replaceWith: '26.49', color: 'black' },
+        { match: '2.49',  replaceWith: '26.49', color: 'black' },
+        { match: '1.49',  replaceWith: '26.49', color: 'black' },
+        { match: '-1.0',  replaceWith: '+1.0',  color: 'black' },
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.',
           replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
@@ -53,27 +54,21 @@
                         span.style.color = r.color;
                         span.dataset.mexcDone = '1';
                         parent.replaceChild(span, node);
-                        break; // only one replacement per text node
+                        break;
                     }
                 }
             }
-        } catch (e) {
-            console.error('MEXC script error:', e);
-        } finally {
-            running = false;
-        }
+        } catch (e) {}
+
+        running = false;
     }
 
-    // Run once after page loads
-    setTimeout(replaceTextNodes, 1200);
+    // Run as soon as possible
+    setTimeout(replaceTextNodes, 300);
 
-    // Very slow and light observer
+    // Faster observer with shorter delay
     const observer = new MutationObserver(() => {
-        // Only run max once every 2 seconds
-        if (!window.mexcLastRun || Date.now() - window.mexcLastRun > 2000) {
-            window.mexcLastRun = Date.now();
-            setTimeout(replaceTextNodes, 500);
-        }
+        setTimeout(replaceTextNodes, 80);   // 80ms delay
     });
 
     observer.observe(document.body, { 
@@ -81,10 +76,6 @@
         subtree: true 
     });
 
-    // Also run every 4 seconds as backup (for very dynamic sites)
-    setInterval(() => {
-        if (Date.now() - (window.mexcLastRun || 0) > 3000) {
-            replaceTextNodes();
-        }
-    }, 4000);
+    // Extra aggressive run for new content
+    setInterval(replaceTextNodes, 800);
 })();
