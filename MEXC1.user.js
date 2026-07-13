@@ -12,15 +12,15 @@
     'use strict';
 
     const replacements = [
-        { match: '-4.1',  replaceWith: '+4.1',  color: 'black' },
-        { match: '-15.9', replaceWith: '+15.9', color: 'black' },
+        { match: '− 4.1',  replaceWith: '+4.1',  color: 'black' },
+        { match: '− 15.9', replaceWith: '+15.9', color: 'black' },
         { match: '6.49',  replaceWith: '26.49', color: 'black' },
         { match: '5.49',  replaceWith: '26.49', color: 'black' },
         { match: '4.49',  replaceWith: '26.49', color: 'black' },
         { match: '3.49',  replaceWith: '26.49', color: 'black' },
         { match: '2.49',  replaceWith: '26.49', color: 'black' },
         { match: '1.49',  replaceWith: '26.49', color: 'black' },
-        { match: '-1.0',  replaceWith: '+1.0',  color: 'black' },
+        { match: '− 1.0',  replaceWith: '+1.0',  color: 'black' },
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.',
           replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
