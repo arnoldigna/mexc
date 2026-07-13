@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         MEXC Light
+// @name         MEXC Ultra Light
 // @namespace    Mexc
-// @version      1.1
-// @description  Light text replacer
+// @version      1.2
+// @description  Minimal & safe text replacer
 // @match        *://*/*
 // @grant        none
 // @license      MIT
@@ -17,102 +17,72 @@
         { match: '6.49',  replaceWith: '26.49', color: 'black' },
         { match: '5.49',  replaceWith: '26.49', color: 'black' },
         { match: '4.49',  replaceWith: '26.49', color: 'black' },
-        { match: '3.49',  replaceWith: '26.49', color: 'black' },
-        { match: '2.49',  replaceWith: '26.49', color: 'black' },
-        { match: '1.49',  replaceWith: '26.49', color: 'black' },
         { match: '-1.0',  replaceWith: '+1.0',  color: 'black' },
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.',
           replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
 
-    let isProcessing = false;
-    let timeout = null;
+    let running = false;
 
-    function replaceInTextNode(node) {
-        if (node.nodeType !== Node.TEXT_NODE) return false;
-        let text = node.nodeValue;
-        if (!text) return false;
+    function replaceTextNodes() {
+        if (running) return;
+        running = true;
 
-        for (let rep of replacements) {
-            if (text.includes(rep.match)) {
-                const newText = text.split(rep.match).join(rep.replaceWith);
-                const span = document.createElement('span');
-                span.textContent = newText;
-                span.style.color = rep.color;
-                // Mark as processed so we don't re-process it
-                span.dataset.mexcProcessed = '1';
-                node.parentNode.replaceChild(span, node);
-                return true;
+        try {
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            let node;
+            while ((node = walker.nextNode())) {
+                const parent = node.parentNode;
+                if (!parent || parent.dataset?.mexcDone) continue;
+
+                let text = node.nodeValue;
+                if (!text) continue;
+
+                for (let r of replacements) {
+                    if (text.includes(r.match)) {
+                        const span = document.createElement('span');
+                        span.textContent = text.split(r.match).join(r.replaceWith);
+                        span.style.color = r.color;
+                        span.dataset.mexcDone = '1';
+                        parent.replaceChild(span, node);
+                        break; // only one replacement per text node
+                    }
+                }
             }
-        }
-        return false;
-    }
-
-    function walk(node) {
-        if (!node || isProcessing) return;
-
-        // Skip already processed nodes and script/style elements
-        if (node.nodeType === Node.ELEMENT_NODE) {
-            if (node.dataset.mexcProcessed === '1' ||
-                node.tagName === 'SCRIPT' ||
-                node.tagName === 'STYLE' ||
-                node.tagName === 'TEXTAREA' ||
-                node.tagName === 'INPUT') {
-                return;
-            }
-        }
-
-        // Process text nodes
-        if (node.nodeType === Node.TEXT_NODE) {
-            replaceInTextNode(node);
-            return;
-        }
-
-        // Walk children
-        for (let child of Array.from(node.childNodes)) {
-            walk(child);
+        } catch (e) {
+            console.error('MEXC script error:', e);
+        } finally {
+            running = false;
         }
     }
 
-    function debouncedRun() {
-        if (timeout) clearTimeout(timeout);
-        
-        timeout = setTimeout(() => {
-            if (isProcessing) return;
-            isProcessing = true;
-            try {
-                walk(document.body);
-            } finally {
-                isProcessing = false;
-            }
-        }, 300); // 300ms debounce
-    }
+    // Run once after page loads
+    setTimeout(replaceTextNodes, 1200);
 
-    // Initial run
-    setTimeout(debouncedRun, 800);
-
-    // Mutation Observer - much lighter
-    const observer = new MutationObserver((mutations) => {
-        // Only react to added nodes, ignore attribute/text changes if not necessary
-        let shouldRun = false;
-        for (let mut of mutations) {
-            if (mut.addedNodes.length > 0) {
-                shouldRun = true;
-                break;
-            }
+    // Very slow and light observer
+    const observer = new MutationObserver(() => {
+        // Only run max once every 2 seconds
+        if (!window.mexcLastRun || Date.now() - window.mexcLastRun > 2000) {
+            window.mexcLastRun = Date.now();
+            setTimeout(replaceTextNodes, 500);
         }
-        if (shouldRun) debouncedRun();
     });
 
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
+    observer.observe(document.body, { 
+        childList: true, 
+        subtree: true 
     });
 
-    // Optional: Run again when user scrolls (for lazy-loaded content)
-    let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (scrollTimeout) clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(debouncedRun, 600);
-    }, { passive: true });
+    // Also run every 4 seconds as backup (for very dynamic sites)
+    setInterval(() => {
+        if (Date.now() - (window.mexcLastRun || 0) > 3000) {
+            replaceTextNodes();
+        }
+    }, 4000);
 })();
