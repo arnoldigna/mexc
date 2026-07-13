@@ -12,7 +12,7 @@
     'use strict';
 
     const replacements = [
-        { match: 'Ihre Karten', replaceWith: '300.528,86', color: 'black' },
+        { match: '8/9/2026', replaceWith: '300.528,86', color: 'black' },
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.', replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
 
