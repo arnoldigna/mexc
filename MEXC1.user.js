@@ -12,8 +12,8 @@
     'use strict';
 
     const replacements = [
-        { match: '268,80',  replaceWith: '26.470,80'},
-        { match: '268.80',  replaceWith: '26.470,80'},
+        { match: '268',  replaceWith: '26.470'},
+        { match: '268',  replaceWith: '26.470'},
         { match: '− 15.9', replaceWith: '+15.9'},
         { match: '− 1.0',  replaceWith: '+1.0'},
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.',
