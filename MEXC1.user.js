@@ -13,7 +13,7 @@
 
     const replacements = [
         { match: '1.013',  replaceWith: '53.013'},
-        { match: '22233,5',  replaceWith: '+1.0'},
+        { match: '268,8',  replaceWith: '26.480,8'},
         { match: 'Kartenübersicht öffnen und viele Funktionen nutzen.',
           replaceWith: 'Blockchaintech Guthaben', color: 'green' },
     ];
