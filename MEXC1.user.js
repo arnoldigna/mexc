@@ -21,7 +21,7 @@
         { match: '1.013',  replaceWith: '53.013'},
         { match: '268',  replaceWith: '26.480'},
         { match: '-10.000,00', replaceWith: '10.000,00', color: 'green' },
-        { match: '-10.000,00 EUR', replaceWith: '10.000,00 EUR', color: 'green' },
+        { match: '-10.000,00  EUR', replaceWith: '10.000,00  EUR', color: 'green' },
     ];
 
     let running = false;
