@@ -13,6 +13,7 @@
 
     const replacements = [
         { match: '47.2',  replaceWith: '77.2'},
+        { match: '57.2',  replaceWith: '77.2'},
         { match: '37.2',  replaceWith: '77.2'},
         { match: '27.2',  replaceWith: '77.2'},
         { match: '17.2',  replaceWith: '77.2'},
