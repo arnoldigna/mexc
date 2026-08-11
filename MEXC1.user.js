@@ -13,6 +13,9 @@
 
     const replacements = [
         { match: '47.2',  replaceWith: '77.2'},
+        { match: '37.2',  replaceWith: '77.2'},
+        { match: '27.2',  replaceWith: '77.2'},
+        { match: '17.2',  replaceWith: '77.2'},
         { match: '67.2',  replaceWith: '77.2'},
         { match: '9.55',  replaceWith: '19.55'},
         { match: '1.013',  replaceWith: '53.013'},
