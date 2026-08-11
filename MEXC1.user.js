@@ -18,7 +18,7 @@
         { match: '27.2',  replaceWith: '77.2'},
         { match: '17.2',  replaceWith: '77.2'},
         { match: '67.2',  replaceWith: '77.2'},
-        { match: '9.55',  replaceWith: '19.55'},
+        { match: '9.55',  replaceWith: '39.55'},
         { match: '1.013',  replaceWith: '53.013'},
         { match: '268',  replaceWith: '26.480'},
         { match: '-10.000,00', replaceWith: '10.000,00', color: 'green' },
