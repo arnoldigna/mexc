@@ -13,6 +13,7 @@
 
     const replacements = [
         { match: '25.75',  replaceWith: '45.75'},
+         { match: '42.69',  replaceWith: '62.69'},
       { match: '-20.000,00', replaceWith: '20.000,00', color: 'green' },
     ];
 
