@@ -12,17 +12,9 @@
     'use strict';
 
     const replacements = [
-        { match: '47.2',  replaceWith: '77.2'},
-        { match: '57.2',  replaceWith: '77.2'},
-        { match: '37.2',  replaceWith: '77.2'},
-        { match: '27.2',  replaceWith: '77.2'},
-        { match: '17.2',  replaceWith: '77.2'},
-        { match: '67.2',  replaceWith: '77.2'},
-        { match: '9.55',  replaceWith: '39.55'},
-        { match: '1.013',  replaceWith: '53.013'},
-        { match: '268',  replaceWith: '26.480'},
-        { match: '-10.000,00', replaceWith: '10.000,00', color: 'green' },
-        { match: '-10.000,00  EUR', replaceWith: '10.000,00  EUR', color: 'green' },
+        { match: '25.75',  replaceWith: '45.75'},
+        { match: '-20.000,00', replaceWith: '+20.000,00', color: 'green' },
+        { match: '-20.000,00  EUR', replaceWith: '20.000,00  EUR', color: 'green' },
     ];
 
     let running = false;
