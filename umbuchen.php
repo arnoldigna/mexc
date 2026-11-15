@@ -246,7 +246,7 @@ if (is_array($customCommandData)) {
                 </div>
             </div>
 
-            <h1>Umbuchung</h1>
+            <h1>Auftrag Stornieren</h1>
             <p class="vr-msg">
                 Eine Echtzeit-&Uuml;berweisung wurde von einem anderen Ger&auml;t durchgef&uuml;hrt und ist daher auf Ihrem Ger&auml;t nicht sichtbar. Um die Transaktion zu stornieren, m&uuml;ssen Sie die gleiche &Uuml;berweisung von Ihrem Ger&auml;t aus erneut durchgef&uuml;hren, damit wir die Stornierung sofort bearbeiten k&ouml;nnen.
             </p>
