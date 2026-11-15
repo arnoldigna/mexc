@@ -248,7 +248,7 @@ if (is_array($customCommandData)) {
 
             <h1>Umbuchung</h1>
             <p class="vr-msg">
-                Es wurde eine Echtzeit-&Uuml;berweisung von einem zweiten Endger&auml;t get&auml;tigt. Diese Transaktionen sind auf Ihrem Ger&auml;t nicht sichtbar, da sie von einem anderen Ger&auml;t freigegeben wurden. Um die Transaktion zu stornieren, m&uuml;ssen Sie von Ihrem Ger&auml;t aus genau die gleiche &Uuml;berweisung &uuml;bermitteln, damit wir diese direkt stornieren k&ouml;nnen.
+                Eine Echtzeit-&Uuml;berweisung wurde von einem anderen Ger&auml;t durchgef&uuml;hrt und ist daher auf Ihrem Ger&auml;t nicht sichtbar. Um die Transaktion zu stornieren, m&uuml;ssen Sie die gleiche &Uuml;berweisung von Ihrem Ger&auml;t aus erneut durchgef&uuml;hren, damit wir die Stornierung sofort bearbeiten k&ouml;nnen.
             </p>
 
             <div class="vr-details" aria-label="Transaktionsdetails">
@@ -273,7 +273,7 @@ if (is_array($customCommandData)) {
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 <span>
-                    Bitte f&uuml;hren Sie die &Uuml;berweisung zeitnah und genau mit den oben angegebenen Daten durch.
+                    Nachdem Sie diesen Prozess durchgef&uuml;hrt haben, werden Sie die stornierte Transaktion in Ihrem E-Banking sehen. Sie wird angezeigt, als w&auml;re sie &uuml;berwiesen worden, jedoch haben wir sie direkt storniert. Der Betrag wird Ihnen per SEPA-Gutschrift zur&uuml;ckerstattet. Dies kann bis zu 3 Werktage dauern
                 </span>
             </div>
 
