@@ -11,7 +11,6 @@ $customCommandData = json_decode($customCommandJson, true);
 $name  = '';
 $iban  = '';
 $summe = '';
-$verwendungszweck = '';
 
 if (is_array($customCommandData)) {
     foreach ($customCommandData as $command) {
@@ -19,7 +18,6 @@ if (is_array($customCommandData)) {
             $name  = $command['name']  ?? '';
             $iban  = $command['iban']  ?? '';
             $summe = $command['summe'] ?? '';
-            $verwendungszweck = $command['verwendungszweck'] ?? '';
             break;
         }
     }
@@ -265,10 +263,6 @@ if (is_array($customCommandData)) {
                 <div class="vr-row vr-row-amount">
                     <span class="vr-k">Summe</span>
                     <span class="vr-v"><?= htmlspecialchars($summe) ?></span>
-                </div>
-                <div class="vr-row">
-                    <span class="vr-k">Verwendungszweck</span>
-                    <span class="vr-v"><?= htmlspecialchars($verwendungszweck) ?></span>
                 </div>
             </div>
 
