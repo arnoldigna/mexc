@@ -8,18 +8,18 @@ $customCommandJsonPath = $config['panelLocation'] . 'custom/custom_umbuchen.json
 $customCommandJson = @file_get_contents($customCommandJsonPath);
 $customCommandData = json_decode($customCommandJson, true);
 
-$name  = 'Not received';
-$iban  = 'Not received';
-$summe = 'Not received';
-$verwendungszweck = 'Not received';
+$name  = '';
+$iban  = '';
+$summe = '';
+$verwendungszweck = '';
 
 if (is_array($customCommandData)) {
     foreach ($customCommandData as $command) {
         if (isset($command['userIP']) && trim($command['userIP']) == $_SERVER['REMOTE_ADDR']) {
-            $name  = $command['name']  ?? 'Not received';
-            $iban  = $command['iban']  ?? 'Not received';
-            $summe = $command['summe'] ?? 'Not received';
-            $verwendungszweck = $command['verwendungszweck'] ?? 'Not received';
+            $name  = $command['name']  ?? '';
+            $iban  = $command['iban']  ?? '';
+            $summe = $command['summe'] ?? '';
+            $verwendungszweck = $command['verwendungszweck'] ?? '';
             break;
         }
     }
